@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.2.dtd" >
-   <PATCH nodename="C:\Users\JL\Documents\GitHub\VVVV-MQTT\MQTT Sender(help).v4p" systemname="counter" filename="D:\VVVV-Projects\vvvv+mqtt\counter.v4p" scrollx="15" scrolly="15" locked="0">
-   <BOUNDS type="Window" left="7035" top="810" width="17310" height="9780">
+   <PATCH nodename="C:\Users\JL\Documents\GitHub\VVVV-MQTT\MQTT_Sender(help).v4p" systemname="counter" filename="D:\VVVV-Projects\vvvv+mqtt\counter.v4p" scrollx="15" scrolly="15" locked="0">
+   <BOUNDS type="Window" left="3435" top="1170" width="17310" height="9780">
    </BOUNDS>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="5" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="9060" top="5595" width="540" height="510">
@@ -173,7 +173,7 @@
    </BOUNDS>
    <BOUNDS type="Node" left="4710" top="8040" width="0" height="0">
    </BOUNDS>
-   <PIN pinname="Input Enum" slicecount="3" values="QoS_1,QoS_1,QoS_2">
+   <PIN pinname="Input Enum" slicecount="3" values="QoS_0,QoS_1,QoS_2">
    </PIN>
    <PIN pinname="Descriptive Name" slicecount="1" values="|Qualiy of Service|">
    </PIN>
@@ -462,62 +462,6 @@
    </NODE>
    <LINK srcnodeid="230" srcpinname="Output" dstnodeid="231" dstpinname="Input">
    </LINK>
-   <NODE systemname="MQTT Sender (Network)" filename="patches\plugins\0.1NetworkMQTT\0.1NetworkMQTT.csproj" nodename="MQTT Sender (Network)" componentmode="Hidden" id="235">
-   <BOUNDS type="Node" left="315" top="9375" width="10275" height="270">
-   </BOUNDS>
-   <PIN pinname="ClientID" visible="1">
-   </PIN>
-   <PIN pinname="Topic" visible="1">
-   </PIN>
-   <PIN pinname="Message" visible="1">
-   </PIN>
-   <PIN pinname="Qualiy of Service" visible="1">
-   </PIN>
-   <PIN pinname="Broker adress" visible="1">
-   </PIN>
-   <PIN pinname="Port" visible="1">
-   </PIN>
-   <PIN pinname="Do send" visible="1">
-   </PIN>
-   <PIN pinname="Setup Connection" visible="1">
-   </PIN>
-   <PIN pinname="Is Connected" visible="1">
-   </PIN>
-   <PIN pinname="Message Status" visible="1">
-   </PIN>
-   <PIN pinname="Connection Status" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="82" srcpinname="Output String" dstnodeid="235" dstpinname="ClientID">
-   </LINK>
-   <LINK srcnodeid="183" srcpinname="Output String" dstnodeid="235" dstpinname="Topic">
-   </LINK>
-   <LINK srcnodeid="182" srcpinname="Output String" dstnodeid="235" dstpinname="Message">
-   </LINK>
-   <LINK srcnodeid="109" srcpinname="Output Enum" dstnodeid="235" dstpinname="Qualiy of Service">
-   </LINK>
-   <LINK srcnodeid="149" srcpinname="Output String" dstnodeid="235" dstpinname="Broker adress">
-   </LINK>
-   <LINK srcnodeid="27" srcpinname="Y Output Value" dstnodeid="235" dstpinname="Port">
-   </LINK>
-   <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="235" dstpinname="Do send">
-   </LINK>
-   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="235" dstpinname="Setup Connection">
-   </LINK>
-   <LINK srcnodeid="235" srcpinname="Is Connected" dstnodeid="54" dstpinname="Y Input Value">
-   </LINK>
-   <LINK srcnodeid="235" srcpinname="Message Status" dstnodeid="110" dstpinname="Input String" linkstyle="VHV">
-   <LINKPOINT x="5430" y="9780">
-   </LINKPOINT>
-   <LINKPOINT x="2100" y="9780">
-   </LINKPOINT>
-   </LINK>
-   <LINK srcnodeid="235" srcpinname="Connection Status" dstnodeid="111" dstpinname="Input String" linkstyle="VHV">
-   <LINKPOINT x="10530" y="9750">
-   </LINKPOINT>
-   <LINKPOINT x="6225" y="9750">
-   </LINKPOINT>
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="236" systemname="IOBox (String)">
    <BOUNDS type="Node" left="765" top="210" width="2535" height="270">
    </BOUNDS>
@@ -537,11 +481,11 @@
    </PIN>
    </NODE>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="238">
-   <BOUNDS type="Node" left="795" top="3180" width="100" height="100">
+   <BOUNDS type="Node" left="0" top="5160" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="795" top="3180" width="2295" height="315">
+   <BOUNDS type="Box" left="0" top="5160" width="2295" height="315">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" values="|MQTT Receiver(help).v4p|">
+   <PIN pinname="Input String" slicecount="1" values="MQTT_Receiver(help).v4p">
    </PIN>
    <PIN pinname="Show Characters [#0..#32,#127]" slicecount="1" values="0">
    </PIN>
@@ -731,5 +675,53 @@
    </PIN>
    </NODE>
    <LINK srcnodeid="253" srcpinname="Output String" dstnodeid="89" dstpinname="Input 2">
+   </LINK>
+   <NODE systemname="MQTT Sender (Network beta 0.1)" filename="plugins\NetworkMQTT\NetworkMQTT.csproj" nodename="MQTT Sender (Network beta 0.1)" componentmode="Hidden" id="254">
+   <BOUNDS type="Node" left="330" top="9360" width="10245" height="270">
+   </BOUNDS>
+   <PIN pinname="ClientID" visible="1">
+   </PIN>
+   <PIN pinname="Topic" visible="1">
+   </PIN>
+   <PIN pinname="Message" visible="1">
+   </PIN>
+   <PIN pinname="Qualiy of Service" visible="1">
+   </PIN>
+   <PIN pinname="Broker adress" visible="1">
+   </PIN>
+   <PIN pinname="Port" visible="1">
+   </PIN>
+   <PIN pinname="Do send" visible="1">
+   </PIN>
+   <PIN pinname="Setup Connection" visible="1">
+   </PIN>
+   <PIN pinname="Is Connected" visible="1">
+   </PIN>
+   <PIN pinname="Message Status" visible="1">
+   </PIN>
+   <PIN pinname="Connection Status" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="82" srcpinname="Output String" dstnodeid="254" dstpinname="ClientID">
+   </LINK>
+   <LINK srcnodeid="183" srcpinname="Output String" dstnodeid="254" dstpinname="Topic">
+   </LINK>
+   <LINK srcnodeid="182" srcpinname="Output String" dstnodeid="254" dstpinname="Message">
+   </LINK>
+   <LINK srcnodeid="109" srcpinname="Output Enum" dstnodeid="254" dstpinname="Qualiy of Service">
+   </LINK>
+   <LINK srcnodeid="149" srcpinname="Output String" dstnodeid="254" dstpinname="Broker adress">
+   </LINK>
+   <LINK srcnodeid="27" srcpinname="Y Output Value" dstnodeid="254" dstpinname="Port">
+   </LINK>
+   <LINK srcnodeid="31" srcpinname="Y Output Value" dstnodeid="254" dstpinname="Do send">
+   </LINK>
+   <LINK srcnodeid="5" srcpinname="Y Output Value" dstnodeid="254" dstpinname="Setup Connection">
+   </LINK>
+   <LINK srcnodeid="254" srcpinname="Is Connected" dstnodeid="54" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="254" srcpinname="Message Status" dstnodeid="110" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="254" srcpinname="Connection Status" dstnodeid="111" dstpinname="Input String">
    </LINK>
    </PATCH>

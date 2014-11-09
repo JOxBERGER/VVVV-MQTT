@@ -1,6 +1,6 @@
 <!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.2.dtd" >
-   <PATCH nodename="C:\Users\JL\Documents\GitHub\VVVV-MQTT\MQTT Receiver(help).v4p" systemname="counter" filename="D:\VVVV-Projects\vvvv+mqtt\counter.v4p" scrollx="0" scrolly="4845">
-   <BOUNDS type="Window" left="900" top="360" width="14835" height="9915">
+   <PATCH nodename="C:\Users\JL\Documents\GitHub\VVVV-MQTT\MQTT_Receiver(help).v4p" systemname="counter" filename="D:\VVVV-Projects\vvvv+mqtt\counter.v4p" scrollx="0" scrolly="4845">
+   <BOUNDS type="Window" left="900" top="360" width="16560" height="9915">
    </BOUNDS>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="178" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="8265" top="7560" width="480" height="480">
@@ -35,15 +35,15 @@
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
-   <PIN pinname="Input String" visible="1">
+   <PIN pinname="Input String" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Output String" visible="1">
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="180" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="3105" top="11415" width="795" height="240">
+   <BOUNDS type="Box" left="3135" top="11415" width="795" height="240">
    </BOUNDS>
-   <BOUNDS type="Node" left="3105" top="11415" width="0" height="0">
+   <BOUNDS type="Node" left="3135" top="11415" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -51,7 +51,7 @@
    </PIN>
    <PIN pinname="Maximum Characters" slicecount="1" values="-1">
    </PIN>
-   <PIN pinname="Input String" visible="1">
+   <PIN pinname="Input String" visible="1" slicecount="1" values="||">
    </PIN>
    <PIN pinname="Output String" visible="1">
    </PIN>
@@ -107,9 +107,9 @@
    </PIN>
    </NODE>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="195">
-   <BOUNDS type="Node" left="3090" top="12705" width="100" height="100">
+   <BOUNDS type="Node" left="3120" top="12705" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="3090" top="12705" width="1395" height="5835">
+   <BOUNDS type="Box" left="3120" top="12705" width="1395" height="5835">
    </BOUNDS>
    <PIN pinname="Input String" visible="1" slicecount="0" values="||">
    </PIN>
@@ -123,7 +123,7 @@
    </PIN>
    </NODE>
    <NODE systemname="Queue (String)" filename="%VVVV%\lib\nodes\plugins\VVVV.Nodes.dll" nodename="Queue (String)" componentmode="Hidden" id="196">
-   <BOUNDS type="Node" left="3090" top="12240" width="100" height="100">
+   <BOUNDS type="Node" left="3120" top="12240" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Frame Count" slicecount="1" values="30">
    </PIN>
@@ -153,7 +153,7 @@
    <LINK srcnodeid="197" srcpinname="Count" dstnodeid="193" dstpinname="Insert">
    </LINK>
    <NODE systemname="Count (String)" nodename="Count (String)" componentmode="Hidden" id="198">
-   <BOUNDS type="Node" left="3270" top="11835" width="100" height="100">
+   <BOUNDS type="Node" left="3300" top="11835" width="100" height="100">
    </BOUNDS>
    <PIN pinname="Input" visible="1" slicecount="1" values="||">
    </PIN>
@@ -183,9 +183,9 @@
    </PIN>
    </NODE>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="209" systemname="IOBox (String)">
-   <BOUNDS type="Box" left="8280" top="11370" width="7605" height="915">
+   <BOUNDS type="Box" left="8265" top="11370" width="7605" height="915">
    </BOUNDS>
-   <BOUNDS type="Node" left="8280" top="11370" width="0" height="0">
+   <BOUNDS type="Node" left="8265" top="11370" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Default" slicecount="1" values="||">
    </PIN>
@@ -215,9 +215,9 @@
    </PIN>
    </NODE>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="212">
-   <BOUNDS type="Node" left="5160" top="8295" width="100" height="100">
+   <BOUNDS type="Node" left="5190" top="8295" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="5160" top="8295" width="1290" height="360">
+   <BOUNDS type="Box" left="5190" top="8295" width="1290" height="360">
    </BOUNDS>
    <PIN pinname="Input String" visible="1" slicecount="1" values="m2m.eclipse.org">
    </PIN>
@@ -235,7 +235,7 @@
    </BOUNDS>
    <BOUNDS type="Box" left="540" top="3495" width="2040" height="330">
    </BOUNDS>
-   <PIN pinname="Input String" slicecount="1" values="|Mqtt Sender(help).v4p|">
+   <PIN pinname="Input String" slicecount="1" values="Mqtt_Sender(help).v4p">
    </PIN>
    <PIN pinname="Show Characters [#0..#32,#127]" slicecount="1" values="0">
    </PIN>
@@ -277,9 +277,9 @@
    <LINK srcnodeid="219" srcpinname="Output" dstnodeid="220" dstpinname="Input String">
    </LINK>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="223" systemname="IOBox (Value Advanced)">
-   <BOUNDS type="Box" left="5295" top="11445" width="480" height="480">
+   <BOUNDS type="Box" left="5700" top="11445" width="480" height="480">
    </BOUNDS>
-   <BOUNDS type="Node" left="5295" top="11445" width="0" height="0">
+   <BOUNDS type="Node" left="5700" top="11445" width="0" height="0">
    </BOUNDS>
    <PIN pinname="Units" slicecount="1" values="||">
    </PIN>
@@ -294,50 +294,10 @@
    <PIN pinname="Y Input Value" slicecount="1" visible="1" values="0">
    </PIN>
    </NODE>
-   <NODE systemname="MQTT Receiver (Network)" filename="plugins\0.1NetworkMQTT\0.1NetworkMQTT.csproj" nodename="MQTT Receiver (Network)" componentmode="Hidden" id="231">
-   <BOUNDS type="Node" left="555" top="10935" width="7770" height="270">
-   </BOUNDS>
-   <PIN pinname="ClientID" visible="1">
-   </PIN>
-   <PIN pinname="Topic" visible="1" slicecount="3" values="vvvv1/E0F847064FD6,vvvv2/E0F847064FD6,vvvv3/E0F847064FD6">
-   </PIN>
-   <PIN pinname="Qualiy of Service" visible="1">
-   </PIN>
-   <PIN pinname="Broker adress" visible="1">
-   </PIN>
-   <PIN pinname="Port" visible="1">
-   </PIN>
-   <PIN pinname="Setup Connection" visible="1">
-   </PIN>
-   <PIN pinname="Message" visible="1">
-   </PIN>
-   <PIN pinname="Is Connected" visible="1">
-   </PIN>
-   <PIN pinname="Connection Status" visible="1">
-   </PIN>
-   </NODE>
-   <LINK srcnodeid="220" srcpinname="Output String" dstnodeid="231" dstpinname="ClientID">
-   </LINK>
-   <LINK srcnodeid="210" srcpinname="Output Enum" dstnodeid="231" dstpinname="Qualiy of Service">
-   </LINK>
-   <LINK srcnodeid="212" srcpinname="Output String" dstnodeid="231" dstpinname="Broker adress">
-   </LINK>
-   <LINK srcnodeid="184" srcpinname="Y Output Value" dstnodeid="231" dstpinname="Port">
-   </LINK>
-   <LINK srcnodeid="178" srcpinname="Y Output Value" dstnodeid="231" dstpinname="Setup Connection">
-   </LINK>
-   <LINK srcnodeid="231" srcpinname="Topic" dstnodeid="179" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="231" srcpinname="Message" dstnodeid="180" dstpinname="Input String">
-   </LINK>
-   <LINK srcnodeid="231" srcpinname="Is Connected" dstnodeid="223" dstpinname="Y Input Value">
-   </LINK>
-   <LINK srcnodeid="231" srcpinname="Connection Status" dstnodeid="209" dstpinname="Input String">
-   </LINK>
    <LINK srcnodeid="178" srcpinname="Y Output Value" dstnodeid="196" dstpinname="Reset" linkstyle="Bezier">
-   <LINKPOINT x="8125" y="9925">
+   <LINKPOINT x="8135" y="9925">
    </LINKPOINT>
-   <LINKPOINT x="3830" y="10325">
+   <LINKPOINT x="3850" y="10325">
    </LINKPOINT>
    </LINK>
    <LINK srcnodeid="178" srcpinname="Y Output Value" dstnodeid="193" dstpinname="Reset" linkstyle="Bezier">
@@ -722,12 +682,10 @@
    </NODE>
    <LINK srcnodeid="260" srcpinname="Y Output Value" dstnodeid="258" dstpinname="Switch">
    </LINK>
-   <LINK srcnodeid="258" srcpinname="Output" dstnodeid="231" dstpinname="Topic">
-   </LINK>
    <NODE nodename="IOBox (String)" componentmode="InABox" id="261" systemname="IOBox (String)">
-   <BOUNDS type="Node" left="9570" top="7245" width="2355" height="270">
+   <BOUNDS type="Node" left="9570" top="7170" width="2355" height="270">
    </BOUNDS>
-   <BOUNDS type="Box" left="9570" top="7245" width="4095" height="2520">
+   <BOUNDS type="Box" left="9570" top="7170" width="4095" height="2610">
    </BOUNDS>
    <PIN pinname="Input String" visible="0" slicecount="1" values="|Tryout a wildcard subscription.&cr;&lf;&cr;&lf;A &apos;#&apos; character represents a complete sub-tree of the hierarchy and thus must be the last character in a subscription topic string, such as SENSOR/#. This will match any topic starting with SENSOR/, such as SENSOR/1/TEMP and SENSOR/2/HUMIDITY.&cr;&lf;&cr;&lf;A &apos;+&apos; character represents a single level of the hierarchy and is used between delimiters. For example, SENSOR/+/TEMP will match SENSOR/1/TEMP and SENSOR/2/TEMP.|">
    </PIN>
@@ -752,4 +710,46 @@
    <PIN pinname="String Type" slicecount="1" values="MultiLine">
    </PIN>
    </NODE>
+   <NODE systemname="MQTT Receiver (Network beta 0.1)" filename="plugins\NetworkMQTT\NetworkMQTT.csproj" nodename="MQTT Receiver (Network beta 0.1)" componentmode="Hidden" id="263">
+   <BOUNDS type="Node" left="585" top="10560" width="7725" height="270">
+   </BOUNDS>
+   <PIN pinname="ClientID" visible="1">
+   </PIN>
+   <PIN pinname="Topic" visible="1">
+   </PIN>
+   <PIN pinname="Qualiy of Service" visible="1">
+   </PIN>
+   <PIN pinname="Broker adress" visible="1">
+   </PIN>
+   <PIN pinname="Port" visible="1">
+   </PIN>
+   <PIN pinname="Setup Connection" visible="1">
+   </PIN>
+   <PIN pinname="Message" visible="1">
+   </PIN>
+   <PIN pinname="Is Connected" visible="1">
+   </PIN>
+   <PIN pinname="Connection Status" visible="1">
+   </PIN>
+   </NODE>
+   <LINK srcnodeid="220" srcpinname="Output String" dstnodeid="263" dstpinname="ClientID">
+   </LINK>
+   <LINK srcnodeid="258" srcpinname="Output" dstnodeid="263" dstpinname="Topic">
+   </LINK>
+   <LINK srcnodeid="210" srcpinname="Output Enum" dstnodeid="263" dstpinname="Qualiy of Service">
+   </LINK>
+   <LINK srcnodeid="212" srcpinname="Output String" dstnodeid="263" dstpinname="Broker adress">
+   </LINK>
+   <LINK srcnodeid="184" srcpinname="Y Output Value" dstnodeid="263" dstpinname="Port">
+   </LINK>
+   <LINK srcnodeid="178" srcpinname="Y Output Value" dstnodeid="263" dstpinname="Setup Connection">
+   </LINK>
+   <LINK srcnodeid="263" srcpinname="Topic" dstnodeid="179" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="263" srcpinname="Message" dstnodeid="180" dstpinname="Input String">
+   </LINK>
+   <LINK srcnodeid="263" srcpinname="Is Connected" dstnodeid="223" dstpinname="Y Input Value">
+   </LINK>
+   <LINK srcnodeid="263" srcpinname="Connection Status" dstnodeid="209" dstpinname="Input String">
+   </LINK>
    </PATCH>
