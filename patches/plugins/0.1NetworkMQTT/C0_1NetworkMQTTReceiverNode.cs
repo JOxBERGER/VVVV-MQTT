@@ -87,28 +87,20 @@ namespace VVVV.Nodes
 		//called when data for any output pin is requested
 		public void Evaluate(int SpreadMax)
 		{
-			SpreadMax = MqttTopicQueue.Count;
+			// is defined SpreadMax Equals Mqtt Topic Queue
+			SpreadMax =  MqttTopicQueue.Count;
 			
-			//FLogger.Log(LogType.Debug, SpreadMax.ToString());
-
-			if (FInputInitMqtt[0] ) 
-			{
-				Task.Run(() => init(FInputMqttBrokerAdress[0], FInputMqttPort[0]));
-				// for (int i=0; i < FInputMqttTopic.SliceCount; i++)
-				// {
-				// 	subscribeToTopic( FInputMqttTopic[i], (int)FInputQoS[i]);
-				// }
-			}
-			
-			if (FInputMqttTopic.IsChanged || FInputQoS.IsChanged)
+			// Setup the MQTT if forced via init or when Topic or Quality of Service changed.
+			if (FInputInitMqtt[0] || FInputMqttTopic.IsChanged || FInputQoS.IsChanged )
 			{
 				Task.Run(() => init(FInputMqttBrokerAdress[0], FInputMqttPort[0]));
 			}
-
-			FOutputMqttTopic.SliceCount = SpreadMax;
-			FOutputMqttMessage.SliceCount = SpreadMax;
 			
-			try 
+			// Slice Count equals MqttTopicQueue Count.
+			FOutputMqttTopic.SliceCount = MqttTopicQueue.Count;
+			FOutputMqttMessage.SliceCount = MqttTopicQueue.Count;
+			
+			try
 			{
 				FOutputIsConnected[0] = client.IsConnected;
 			}
@@ -118,8 +110,8 @@ namespace VVVV.Nodes
 			}
 			
 			for (int i = 0; i < SpreadMax; i++) {
-				FOutputMqttTopic[i] = (String)MqttTopicQueue.Dequeue(); 
-				FOutputMqttMessage[i] = (String)MqttMessageQueue.Dequeue();			
+				FOutputMqttTopic[i] = (String)MqttTopicQueue.Dequeue();
+				FOutputMqttMessage[i] = (String)MqttMessageQueue.Dequeue();
 			}
 			FOutputConnectionStatus[0] = FOutputConnectionStatus[0];
 			FOutputIsConnected[0] = FOutputIsConnected[0];
@@ -132,57 +124,56 @@ namespace VVVV.Nodes
 			
 			if (!ConnectionInProgress)
 			{
-			ConnectionInProgress = true;
-			FOutputConnectionStatus[0] = null;
-			FOutputConnectionStatus[0] += getTimestamp() + "Trying to setup client to connect to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
-			FOutputConnectionStatus[0] += getTimestamp() + "This might take a momment ... \r\n";
-			try
-			{
-				await Task.Run(() => client.Disconnect());
-			}
-			catch (Exception e)
-			{
-				FLogger.Log(LogType.Message, ID + "No Client to disconnetc bevore reconnect." + e.Message);
-			}
-			
-			//ConnectionStatus += getTimestamp() + "Trying to setup client to connect to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
-			
-			try
-			{
-				await Task.Run(() => client = new MqttClient(MqttBrocker, MqttPort, false, null));
-
-				// define the clientID
-				// string clientId = FInputMqttClientId.AsString();
-				client.Connect(FInputMqttClientId[0].ToString());
-				client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
-				// client.MqttMsgDisconnected += client_Disconnected;
+				ConnectionInProgress = true;
+				FOutputConnectionStatus[0] = null;
+				FOutputConnectionStatus[0] += getTimestamp() + "Trying to setup client to connect to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
+				FOutputConnectionStatus[0] += getTimestamp() + "This might take a momment ... \r\n";
 				
-				// Setup Mqtt Message Listeners
-				client.MqttMsgSubscribed += client_MqttMsgSubscribed;               // Define what function to call when a subscription is acknowledged
-				client.MqttMsgDisconnected += client_MqttMsgDisconnected; 	// Message lost connection to brocker message.
-				
+				// 01 - disconnect.
 				try
 				{
-				if (client.IsConnected)
+					await Task.Run(() => client.Disconnect());
+				}
+				catch (Exception e)
 				{
-				FOutputConnectionStatus[0] += getTimestamp() + "Connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
-					for (int i=0; i < FInputMqttTopic.SliceCount; i++)
+					FLogger.Log(LogType.Message, ID + "Tried to disconnect but failed." + e.Message);
+				}
+				
+				// 02 - setup the new client.
+				try
+				{
+					await Task.Run(() => client = new MqttClient(MqttBrocker, MqttPort, false, null));
+
+					// define the clientID
+					client.Connect(FInputMqttClientId[0].ToString());
+					client.MqttMsgPublishReceived += client_MqttMsgPublishReceived;
+					
+					// Setup Mqtt Message Listeners
+					client.MqttMsgSubscribed += client_MqttMsgSubscribed;               // Define what function to call when a subscription is acknowledged
+					client.MqttMsgDisconnected += client_MqttMsgDisconnected; 	// Message lost connection to brocker message.
+					
+					try
 					{
-						subscribeToTopic( FInputMqttTopic[i], (int)FInputQoS[i]);
+						if (client.IsConnected)
+						{
+							FOutputConnectionStatus[0] += getTimestamp() + "Connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
+							for (int i=0; i < FInputMqttTopic.SliceCount; i++)
+							{
+								subscribeToTopic( FInputMqttTopic[i], (int)FInputQoS[i]);
+							}
+						}
+					}
+					catch
+					{
+						FOutputConnectionStatus[0] += getTimestamp() + "Failed to connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
 					}
 				}
-				}
-				catch
+				
+				catch (Exception e)
 				{
-				FOutputConnectionStatus[0] += getTimestamp() + "Failed to connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";	
-				}		
-			}
-			
-			catch (Exception e)
-			{
-				FLogger.Log(LogType.Message, ID + "Could not connect: " + e.Message);
-				FOutputConnectionStatus[0] += getTimestamp() + "Failed to connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
-			}
+					FLogger.Log(LogType.Message, ID + "Could not connect: " + e.Message);
+					FOutputConnectionStatus[0] += getTimestamp() + "Failed to connected to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
+				}
 				ConnectionInProgress = false;
 			}
 			else
@@ -191,29 +182,27 @@ namespace VVVV.Nodes
 			}
 		}
 		
-		
-		
 		public void subscribeToTopic(string MqttTopic, int MqttQoS)
 		{
 			//client.Unsubscribe(new string[] {"#"});
 			
 			switch (MqttQoS)
 			{
-			case 0:
-				client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE }); 
-				break;
-			case 1:
-				client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE }); 
-				break;
-			case 2:
-				client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE }); 
-				break;
+				case 0:
+					client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE });
+					break;
+				case 1:
+					client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE });
+					break;
+				case 2:
+					client.Subscribe(new string[] { MqttTopic }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+					break;
 			}
 			
 		}
 		
 		private void client_MqttMsgPublishReceived(object sender, MqttMsgPublishEventArgs e)
-		{ 				
+		{
 			// Get the coressponding Topics for the Message
 			MqttTopicQueue.Enqueue(e.Topic);
 			
@@ -225,21 +214,14 @@ namespace VVVV.Nodes
 			// FLogger.Log(LogType.Debug, e.QosLevel.ToString());
 		}
 		
-		/*
-		private void client_Disconnected(object sender, MqttMsgContext e)
-		{
-			FLogger.Log(LogType.Debug, "Disconnected");
-		}
-		*/
-		
 		// Handle subscription acknowledgements
-        private void client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
-        {
-            FLogger.Log(LogType.Message, ID + "Subscribed.");
-        }
+		private void client_MqttMsgSubscribed(object sender, MqttMsgSubscribedEventArgs e)
+		{
+			FLogger.Log(LogType.Message, ID + "Subscribed.");
+		}
 
 		private void client_MqttMsgDisconnected(object sender, EventArgs e)
-		{	
+		{
 			FOutputConnectionStatus[0] += getTimestamp() + "Lost Connection to Broker.\r\n";
 			FOutputIsConnected[0] = client.IsConnected;
 			FLogger.Log(LogType.Message, ID + "Lost Connection to Broker. Client Connection Status: " + client.IsConnected);

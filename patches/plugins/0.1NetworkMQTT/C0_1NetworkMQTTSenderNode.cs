@@ -60,7 +60,7 @@ namespace VVVV.Nodes
 		[Input("Do send", IsBang = true, DefaultValue = 0, IsSingle = true)]
 		IDiffSpread<bool> FInputSendMqtt;
 		
-		[Output("Is Connected")]
+		[Output("Is Connected", DefaultValue = 0, IsSingle = true)]
 		public ISpread<bool> FOutputIsConnected;
 		
 		[Output("Message Status")]
@@ -84,12 +84,12 @@ namespace VVVV.Nodes
 		public void Evaluate(int SpreadMax)
 			//public async Task Evaluate(int SpreadMax)
 		{
-			if (FInputInitMqtt[0] == true)
+			if (FInputInitMqtt[0])
 			{
 				Task.Run(() => init(FInputMqttBrokerAdress[0], FInputMqttPort[0], FInputMqttClientId[0]));
 			}
 			
-			FOutputIsConnected.SliceCount = 1;
+			//FOutputIsConnected.SliceCount = 1;
 			
 			if (FInputSendMqtt[0])
 			{
@@ -168,11 +168,11 @@ namespace VVVV.Nodes
 				{
 					try
 					{
-						client.Disconnect();
+						await Task.Run(() => client.Disconnect());
 					}
 					catch
 					{
-						//
+						FLogger.Log(LogType.Message, ID + "Tried to disconnect but failed.");
 					}
 					FOutputConnectionStatus[0] += getTimestamp() + "Trying to setup client to connect to broker: " + MqttBrocker + " at Port: " + MqttPort + ".\r\n";
 					FOutputConnectionStatus[0] += getTimestamp() + "This might take a momment ... \r\n";
