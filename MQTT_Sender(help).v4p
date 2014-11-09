@@ -481,9 +481,9 @@
    </PIN>
    </NODE>
    <NODE systemname="IOBox (String)" nodename="IOBox (String)" componentmode="InABox" id="238">
-   <BOUNDS type="Node" left="0" top="5160" width="100" height="100">
+   <BOUNDS type="Node" left="825" top="3135" width="100" height="100">
    </BOUNDS>
-   <BOUNDS type="Box" left="0" top="5160" width="2295" height="315">
+   <BOUNDS type="Box" left="825" top="3135" width="2295" height="315">
    </BOUNDS>
    <PIN pinname="Input String" slicecount="1" values="MQTT_Receiver(help).v4p">
    </PIN>
