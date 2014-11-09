@@ -50,12 +50,49 @@
     <Reference Include="VVVV.Utils3rdParty" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="C0_1NetworkMQTTReceiverNode.cs" />
-    <Compile Include="C0_1NetworkMQTTSenderNode.cs" />
+    <Compile Include="NetworkMQTTReceiverNode.cs" />
+    <Compile Include="NetworkMQTTSenderNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="NetworkMQTT.csproj" />
+    <None Include="NetworkMQTT.sln" />
     <None Include="packages.config" />
+    <None Include="packages\M2Mqtt.3.6\lib\net40\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\net45\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netcore451\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\be\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\be\M2Mqtt.pdbx" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\be\M2Mqtt.pe" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\le\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\le\M2Mqtt.pdbx" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\le\M2Mqtt.pe" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf42\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\be\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\be\M2Mqtt.pdbx" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\be\M2Mqtt.pe" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\le\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\le\M2Mqtt.pdbx" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\le\M2Mqtt.pe" />
+    <None Include="packages\M2Mqtt.3.6\lib\netmf43\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\lib\wpa81\M2Mqtt.dll" />
+    <None Include="packages\M2Mqtt.3.6\M2Mqtt.3.6.nupkg" />
+    <None Include="packages\repositories.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="packages" />
+    <Folder Include="packages\M2Mqtt.3.6" />
+    <Folder Include="packages\M2Mqtt.3.6\lib" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\net40" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\net45" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netcore451" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42\be" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42\le" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43\be" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43\le" />
+    <Folder Include="packages\M2Mqtt.3.6\lib\wpa81" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

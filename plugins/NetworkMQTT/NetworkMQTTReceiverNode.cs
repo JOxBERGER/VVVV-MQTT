@@ -21,7 +21,7 @@ using VVVV.Core.Logging;
 namespace VVVV.Nodes
 {
 	#region PluginInfo
-	[PluginInfo(Name = "MQTT Receiver", Category = "Network", Help = "Send Mqtt Messages.", Tags = "IoT", AutoEvaluate = true)]
+	[PluginInfo(Name = "MQTT Receiver", Category = "Network", Help = "Send MQTT Messages.", Tags = "IoT, MQTT", Credits = "M2MQTT m2mqtt.wordpress.com",  Author = "Jochen Leinberger, explorative-environments.net", AutoEvaluate = true)]
 	#endregion PluginInfo
 	public class C0_1NetworkMQTTReceiverNode : IPluginEvaluate
 	{
