@@ -6,11 +6,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <OutputType>Library</OutputType>
     <RootNamespace>VVVV.Nodes</RootNamespace>
-    <AssemblyName>0.1NetworkMQTT</AssemblyName>
+    <AssemblyName>NetworkMQTT</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
-    <ReferencePath>..\..\..\..\..\..\..\..\Program Files\vvvv\vvvv_45beta31.2_x86\lib\core\;..\..\..\..\..\..\..\..\Program Files\vvvv\vvvv_45beta31.2_x86\lib\nodes\plugins\</ReferencePath>
+    <ReferencePath>..\..\..\..\..\..\..\Program Files\vvvv\vvvv45beta33.7\vvvv_45beta33.7_x86\lib\core\;..\..\..\..\..\..\..\Program Files\vvvv\vvvv45beta33.7\vvvv_45beta33.7_x86\lib\nodes\plugins\;..\..\..\..\..\..\..\Program Files\vvvv\vvvv_45beta31.2_x86\lib\core\;..\..\..\..\..\..\..\Program Files\vvvv\vvvv_45beta31.2_x86\lib\nodes\plugins\</ReferencePath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -78,21 +78,6 @@
     <None Include="packages\M2Mqtt.3.6\lib\wpa81\M2Mqtt.dll" />
     <None Include="packages\M2Mqtt.3.6\M2Mqtt.3.6.nupkg" />
     <None Include="packages\repositories.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="packages" />
-    <Folder Include="packages\M2Mqtt.3.6" />
-    <Folder Include="packages\M2Mqtt.3.6\lib" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\net40" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\net45" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netcore451" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42\be" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf42\le" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43\be" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\netmf43\le" />
-    <Folder Include="packages\M2Mqtt.3.6\lib\wpa81" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

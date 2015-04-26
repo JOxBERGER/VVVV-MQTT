@@ -1,6 +1,6 @@
-<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta31.2.dtd" >
+<!DOCTYPE PATCH  SYSTEM "http://vvvv.org/versions/vvvv45beta33.7.dtd" >
    <PATCH nodename="C:\Users\JL\Documents\GitHub\VVVV-MQTT\MQTT_Receiver(help).v4p" systemname="counter" filename="D:\VVVV-Projects\vvvv+mqtt\counter.v4p" scrollx="0" scrolly="4845">
-   <BOUNDS type="Window" left="900" top="360" width="16560" height="9915">
+   <BOUNDS type="Window" left="6015" top="-14400" width="16560" height="9915">
    </BOUNDS>
    <NODE nodename="IOBox (Value Advanced)" componentmode="InABox" id="178" systemname="IOBox (Value Advanced)">
    <BOUNDS type="Box" left="8265" top="7560" width="480" height="480">
@@ -752,4 +752,6 @@
    </LINK>
    <LINK srcnodeid="263" srcpinname="Connection Status" dstnodeid="209" dstpinname="Input String">
    </LINK>
+   <PACK Name="addonpack" Version="33.7.0">
+   </PACK>
    </PATCH>

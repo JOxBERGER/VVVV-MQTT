@@ -47,6 +47,9 @@ namespace VVVV.Nodes
 		
 		[Input("Qualiy of Service", DefaultEnumEntry = "QoS_0")]
 		public IDiffSpread<QOS> FInputQoS;
+		
+		[Input("Retained", IsBang = true, DefaultValue = 0, IsSingle = false)]
+		IDiffSpread<bool> FInputRetained;
 
 		[Input("Broker adress", DefaultString = "192.168.1.1", IsSingle = true)]
 		public ISpread<string> FInputMqttBrokerAdress;
@@ -108,17 +111,17 @@ namespace VVVV.Nodes
 								switch ((int)FInputQoS[i])
 								{
 									case 0:
-										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, true);
+										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_AT_MOST_ONCE, FInputRetained[i]);
 										//client.Disconnect();
 										break;
 										
 									case 1:
-										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, true);
+										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_AT_LEAST_ONCE, FInputRetained[i]);
 										//client.Disconnect();
 										break;
 										
 									case 2:
-										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, true);
+										client.Publish(FInputMqttTopic[i], System.Text.Encoding.UTF8.GetBytes(FInputMqttMessage[i]), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, FInputRetained[i]);
 										//client.Disconnect();
 										break;
 								}
